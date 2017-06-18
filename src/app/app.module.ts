@@ -1,7 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MdAutocompleteModule,
+  MdButtonModule,
+  MdCheckboxModule,
+  MdInputModule,
+  MdSelectModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ProblemsComponent } from './problems/problems.component';
@@ -19,7 +27,14 @@ import { DataComponent } from './data/data.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    ReactiveFormsModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    MdAutocompleteModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MdInputModule,
+    MdSelectModule
   ],
   providers: [
     DataService
