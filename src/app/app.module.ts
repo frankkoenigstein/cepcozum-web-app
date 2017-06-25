@@ -6,10 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdAutocompleteModule,
   MdButtonModule,
+  MdCardModule,
   MdCheckboxModule,
+  MdIconModule,
   MdInputModule,
-  MdSelectModule
+  MdListModule,
+  MdSelectModule,
+  MdToolbarModule
 } from '@angular/material';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { ProblemsComponent } from './problems/problems.component';
@@ -30,11 +36,16 @@ import { DataComponent } from './data/data.component';
     ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MdAutocompleteModule,
     MdButtonModule,
+    MdCardModule,
     MdCheckboxModule,
+    MdIconModule,
     MdInputModule,
-    MdSelectModule
+    MdListModule,
+    MdSelectModule,
+    MdToolbarModule
   ],
   providers: [
     DataService
