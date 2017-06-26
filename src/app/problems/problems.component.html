@@ -1,0 +1,43 @@
+<md-card *ngIf="dataService.phoneOption">
+  <form id="problemsForm" ngNoForm
+    method="post"
+    action="mailto:frank.koenigstein@posteo.de?subject=Cepcozum"
+    enctype="text/plain"
+    novalidate>
+    <md-card-header>
+      <md-card-title>
+        <h2>{{ dataService.phoneOption.description }}</h2>
+      </md-card-title>
+      <md-card-subtitle>
+        <div fxLayout='row' fxFlex="100" fxLayoutAlign="space-between">
+          <div fxLayout='column'>
+            <h3>Cihazdaki sorunlar:</h3>
+            <div>{{ selectedRepairOptionsDesc }}</div>
+          </div>
+          <div fxFlex="20px"></div>
+          <div fxLayout="column" fxFlex="33">
+            <h3>Tahmini Fiyat:</h3>
+            <div *ngIf="price">{{ price }}&thinsp;₺</div>
+          </div>
+        </div>
+      </md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <input type="hidden" name="phone" [value]="dataService.phoneOption.description" />
+      <md-list>
+        <md-list-item *ngFor="let repairOption of dataService.phoneOption.repairOptions">
+          <md-checkbox
+          [name]="repairOption.description"
+          [value]="repairOption.price"
+          (click)="toggleRepairOption(repairOption)">
+            {{ repairOption.description }} ({{ repairOption.price }}&thinsp;₺)
+          </md-checkbox>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+    <md-card-actions>
+      <button type="button" md-raised-button color="accent" (click)="back()">Back</button>
+      <button type="submit" md-raised-button color="accent">Devam</button>
+    </md-card-actions>
+  </form>
+</md-card>
