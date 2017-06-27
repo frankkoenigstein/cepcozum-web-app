@@ -2,7 +2,7 @@
  * Repair option
  */
 export interface IRepairOption {
-  'description': string;
+  problemId: number;
   'price': number;
   'currency': string;
 }
