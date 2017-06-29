@@ -1,10 +1,4 @@
-import { IRepairOption } from 'app/irepair-option';
-
-
-export interface IProblem {
-  id: number;
-  description: string;
-}
+import { IProblem, IRepairOption } from 'app/irepair-option';
 
 /**
  * IPhoneOption
@@ -12,6 +6,5 @@ export interface IProblem {
 export interface IPhoneOption {
   id: number;
   description: string;
-  problems: IProblem[];
   repairOptions: Array<IRepairOption>;
 }
