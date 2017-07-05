@@ -1,0 +1,21 @@
+{
+  "PHONE": {
+    "PROBLEMS": {
+      "1": "Ekran Kırık",
+      "2": "Batarya (Pil)",
+      "3": "Kilit / Orta Tuş",
+      "4": "Şarj Problemi",
+      "5": "Hoparlör / Ahize",
+      "6": "Kamera Problemi",
+      "7": "Kasa Değişimi",
+      "8": "LCD Problemi",
+      "9": "Kırık Dokunmatik"
+    },
+    "PRICE_ESTIMATED": "Tahmini Fiyat",
+    "PROBLEMS_DESC": "Cihazdaki sorunlar",
+    "REPAIR": "Tamir Et",
+    "SELECT_PLACEHOLDER": "Telefonunun marka ve modeli nedir?"
+  },
+  "BACK": "Zurück",
+  "FORWARD": "Devam"
+}

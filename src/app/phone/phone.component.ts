@@ -25,7 +25,10 @@ export class PhoneComponent implements OnInit {
           this.setPhoneOption();
           return this.filter(val);
         } else {
-          return this.dataService.repairTable.map((po: IPhoneOption) => po.description);
+          return this.dataService
+            .repairTable
+            .phoneOptions
+            .map((po: IPhoneOption) => po.description);
         }
       });
   }
@@ -37,6 +40,7 @@ export class PhoneComponent implements OnInit {
   private filter(val: string): string[] {
     return this.dataService
       .repairTable
+      .phoneOptions
       .filter((phoneOption: IPhoneOption) => new RegExp(`${val}`, 'gi').test(phoneOption.description))
       .map((phoneOption: IPhoneOption) => phoneOption.description);
   }
@@ -47,6 +51,7 @@ export class PhoneComponent implements OnInit {
 
       this.phoneOptionId = this.dataService
         .repairTable
+        .phoneOptions
         .filter((po: IPhoneOption): boolean => poRegExp.test(po.description))
         .map((po: IPhoneOption): number => po.id)
         .shift();

@@ -11,13 +11,17 @@
       <md-card-subtitle>
         <div fxLayout='row' fxFlex="100" fxLayoutAlign="space-between">
           <div fxLayout='column'>
-            <h3>Cihazdaki sorunlar:</h3>
-            <div>{{ selectedRepairOptionsDesc }}</div>
+            <h3>{{ "PHONE.PROBLEMS_DESC" | translate }}:</h3>
+            <div>
+              <span *ngFor="let repairOption of dataService.selectedRepairOptions">
+                {{ 'PHONE.PROBLEMS.' + repairOption.problemId | translate }}
+              </span>
+            </div>
           </div>
           <div fxFlex="20px"></div>
           <div fxLayout="column" fxFlex="33">
-            <h3>Tahmini Fiyat:</h3>
-            <div *ngIf="price">{{ price }}&thinsp;₺</div>
+            <h3>{{ "PHONE.PRICE_ESTIMATED" | translate }}:</h3>
+            <div *ngIf="dataService.price">{{ dataService.price }}&thinsp;₺</div>
           </div>
         </div>
       </md-card-subtitle>
@@ -27,17 +31,17 @@
       <md-list>
         <md-list-item *ngFor="let repairOption of dataService.phoneOption.repairOptions">
           <md-checkbox
-          [name]="repairOption.description"
+          [name]="repairOption.problemId"
           [value]="repairOption.price"
           (click)="toggleRepairOption(repairOption)">
-            {{ repairOption.description }} ({{ repairOption.price }}&thinsp;₺)
+            {{ 'PHONE.PROBLEMS.' + repairOption.problemId | translate }} ({{ repairOption.price }}&thinsp;₺)
           </md-checkbox>
         </md-list-item>
       </md-list>
     </md-card-content>
     <md-card-actions>
-      <button type="button" md-raised-button color="accent" (click)="back()">Back</button>
-      <button type="submit" md-raised-button color="accent">Devam</button>
+      <button type="button" md-raised-button color="accent" (click)="back()">{{ "BACK" | translate}}</button>
+      <button type="submit" md-raised-button color="accent">{{ "FORWARD" | translate }}</button>
     </md-card-actions>
   </form>
 </md-card>

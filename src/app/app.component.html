@@ -1,5 +1,14 @@
 <md-toolbar color="primary">
-  <span>{{title}}</span>
+  <div fxFlex="100" fxLayoutAlign="space-between">
+    {{title}}
+    <form novalidate>
+      <md-select color="accent">
+        <md-option color="accent" *ngFor="let lang of translate.getLangs()" [value]="lang" (click)="setLang(lang)">
+          {{ lang }}
+        </md-option>
+      </md-select>
+    </form>
+  </div>
 </md-toolbar>
 
 <app-data></app-data>

@@ -2,7 +2,7 @@ import { IPhoneOption } from 'app/iphone-option';
 import { IProblem } from 'app/irepair-option';
 
 export interface IRepairTable {
-  repairTable: IPhoneOption[];
+  phoneOptions: IPhoneOption[];
   problems: IProblem[];
 }
 
@@ -35,7 +35,7 @@ export const repairTable: IRepairTable = {
     id: 9,
     description: 'Kırık Dokunmatik'
   }],
-  repairTable: [
+  phoneOptions: [
     {
       'id': 1,
       'description': 'iPhone 4',

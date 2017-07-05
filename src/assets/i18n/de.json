@@ -1,0 +1,21 @@
+{
+  "PHONE": {
+    "PROBLEMS": {
+      "1": "Bildschirm Gebrochen",
+      "2": "Batterie (Akku)",
+      "3": "Sperre / Home Button",
+      "4": "Aufladungsproblem",
+      "5": "Ohrmuscheln",
+      "6": "Kamera Probleme",
+      "7": "Rahmen Austauch",
+      "8": "LCD Probleme",
+      "9": "Gebrochene Touch-Bereiche"
+    },
+    "PRICE_ESTIMATED": "Geschätzter Preis",
+    "PROBLEMS_DESC": "Probleme",
+    "REPAIR": "Reparieren",
+    "SELECT_PLACEHOLDER": "Marke und Model"
+  },
+  "BACK": "Zurück",
+  "FORWARD": "Weiter"
+}

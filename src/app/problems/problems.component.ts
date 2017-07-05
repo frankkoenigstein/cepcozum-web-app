@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { IRepairOption } from 'app/irepair-option';
 import { DataService } from '../data.service';
+import { TranslateService } from "ng2-translate";
 
 @Component({
   selector: 'app-problems',
@@ -8,11 +9,10 @@ import { DataService } from '../data.service';
   styleUrls: ['./problems.component.css']
 })
 export class ProblemsComponent implements OnInit {
-  public selectedRepairOptions: IRepairOption[] = [];
-  public price = 0;
-  public selectedRepairOptionsDesc = '';
-
-  constructor(public dataService: DataService) {
+  constructor(
+    public dataService: DataService,
+    private translate: TranslateService
+  ) {
   }
 
   public ngOnInit() {
@@ -20,28 +20,19 @@ export class ProblemsComponent implements OnInit {
 
   public back(): void {
     this.dataService.resetPhoneOption();
-    this.price = 0;
-    this.selectedRepairOptionsDesc = '';
+    this.dataService.price = 0;
+    this.dataService.selectedRepairOptions = [];
   }
 
   public toggleRepairOption(ro: IRepairOption): void {
-    const roIndex: number = this.selectedRepairOptions.indexOf(ro);
+    const roIndex: number = this.dataService.selectedRepairOptions.indexOf(ro);
 
     if (roIndex < 0) {
-      this.selectedRepairOptions.push(ro);
+      this.dataService.selectedRepairOptions.push(ro);
     } else {
-      this.selectedRepairOptions.splice(roIndex, 1);
+      this.dataService.selectedRepairOptions.splice(roIndex, 1);
     }
 
-    this.calculate();
-  }
-
-  private calculate(): void {
-    this.selectedRepairOptionsDesc = this.selectedRepairOptions
-      .map((repairOption: IRepairOption): string => repairOption.description)
-      .join(', ');
-
-    this.price = this.selectedRepairOptions
-      .reduce((price: number, repairOption: IRepairOption) => price + repairOption.price, 0);
+    this.dataService.calculate();
   }
 }
