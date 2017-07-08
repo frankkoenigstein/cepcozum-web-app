@@ -1,4 +1,4 @@
-<div *ngIf="!dataService.phoneOption">
+<div>
   <form name="phoneOptionForm" novalidate fxFlex="100" fxLayoutAlign="center">
     <div fxLayout="row" fxFlex="80" fxLayoutAlign="space-between center">
       <div fxFlex="90">
@@ -18,8 +18,8 @@
       <div fxFlex="20px"></div>
       <div>
         <button type="button" md-raised-button color="accent"
-          (click)="selectPhoneOption()"
-          [disabled]="!phoneOptionControl.valid">
+          [disabled]="!phoneOptionId"
+           routerLink="/problems" routerLinkActive="active">
           {{ "PHONE.REPAIR" | translate }}
         </button>
       </div>

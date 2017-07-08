@@ -17,5 +17,8 @@
     "SELECT_PLACEHOLDER": "Marke und Model"
   },
   "BACK": "Zurück",
-  "FORWARD": "Weiter"
+  "FORWARD": "Weiter",
+  "NO": "nein",
+  "WARRANTY": "Garantie",
+  "YES": "ja"
 }

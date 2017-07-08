@@ -1,35 +1,10 @@
-<md-card *ngIf="dataService.phoneOption">
-  <form id="problemsForm" ngNoForm
-    method="post"
-    action="mailto:frank.koenigstein@posteo.de?subject=Cepcozum"
-    enctype="text/plain"
-    novalidate>
-    <md-card-header>
-      <md-card-title>
-        <h2>{{ dataService.phoneOption.description }}</h2>
-      </md-card-title>
-      <md-card-subtitle>
-        <div fxLayout='row' fxFlex="100" fxLayoutAlign="space-between">
-          <div fxLayout='column'>
-            <h3>{{ "PHONE.PROBLEMS_DESC" | translate }}:</h3>
-            <div>
-              <span *ngFor="let repairOption of dataService.selectedRepairOptions">
-                {{ 'PHONE.PROBLEMS.' + repairOption.problemId | translate }}
-              </span>
-            </div>
-          </div>
-          <div fxFlex="20px"></div>
-          <div fxLayout="column" fxFlex="33">
-            <h3>{{ "PHONE.PRICE_ESTIMATED" | translate }}:</h3>
-            <div *ngIf="dataService.price">{{ dataService.price }}&thinsp;₺</div>
-          </div>
-        </div>
-      </md-card-subtitle>
-    </md-card-header>
+<md-card>
+  <form id="problemsForm" novalidate>
+    <app-order-card-header></app-order-card-header>
     <md-card-content>
-      <input type="hidden" name="phone" [value]="dataService.phoneOption.description" />
+      <input type="hidden" name="phone" [value]="dataService.phoneOption?.description" />
       <md-list>
-        <md-list-item *ngFor="let repairOption of dataService.phoneOption.repairOptions">
+        <md-list-item *ngFor="let repairOption of dataService.phoneOption?.repairOptions">
           <md-checkbox
           [name]="repairOption.problemId"
           [value]="repairOption.price"
@@ -40,8 +15,14 @@
       </md-list>
     </md-card-content>
     <md-card-actions>
-      <button type="button" md-raised-button color="accent" (click)="back()">{{ "BACK" | translate}}</button>
-      <button type="submit" md-raised-button color="accent">{{ "FORWARD" | translate }}</button>
+      <button type="button" md-raised-button color="accent" (click)="back()"
+      routerLink="/phone" routerLinkActive="active">
+        {{ "BACK" | translate}}
+      </button>
+      <button type="button" md-raised-button color="accent"
+      routerLink="/problemsadditional" routerLinkActive="active">
+        {{ "FORWARD" | translate }}
+      </button>
     </md-card-actions>
   </form>
 </md-card>

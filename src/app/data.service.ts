@@ -10,6 +10,8 @@ export class DataService {
   public repairTable: IRepairTable = repairTable;
   public selectedRepairOptions: IRepairOption[] = [];
   public price = 0;
+  public warranty: boolean = null;
+  public securityCode: string = null;
 
   constructor() { }
 

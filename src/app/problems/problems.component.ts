@@ -1,7 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { IRepairOption } from 'app/irepair-option';
 import { DataService } from '../data.service';
-import { TranslateService } from "ng2-translate";
 
 @Component({
   selector: 'app-problems',
@@ -10,8 +9,7 @@ import { TranslateService } from "ng2-translate";
 })
 export class ProblemsComponent implements OnInit {
   constructor(
-    public dataService: DataService,
-    private translate: TranslateService
+    public dataService: DataService
   ) {
   }
 

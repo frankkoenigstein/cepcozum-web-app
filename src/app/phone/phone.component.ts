@@ -18,7 +18,9 @@ export class PhoneComponent implements OnInit {
   constructor(public dataService: DataService) { }
 
   public ngOnInit() {
-    this.filteredOptions = this.phoneOptionControl.valueChanges
+    this.filteredOptions = this
+      .phoneOptionControl
+      .valueChanges
       .startWith(null)
       .map(val => {
         if (val) {
@@ -34,7 +36,7 @@ export class PhoneComponent implements OnInit {
   }
 
   public selectPhoneOption(): void {
-    this.dataService.selectPhoneOption(this.phoneOptionId);
+
   }
 
   private filter(val: string): string[] {
@@ -58,5 +60,7 @@ export class PhoneComponent implements OnInit {
     } else {
       this.phoneOptionId = null;
     }
+
+    this.dataService.selectPhoneOption(this.phoneOptionId);
   }
 }

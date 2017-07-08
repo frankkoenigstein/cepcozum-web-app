@@ -1,0 +1,22 @@
+<md-card-header>
+  <md-card-title>
+    <h2>{{ dataService.phoneOption?.description }}</h2>
+  </md-card-title>
+  <md-card-subtitle>
+    <div fxLayout='row' fxFlex="100" fxLayoutAlign="space-between">
+      <div fxLayout='column'>
+        <h3>{{ "PHONE.PROBLEMS_DESC" | translate }}:</h3>
+        <div>
+          <span *ngFor="let repairOption of dataService.selectedRepairOptions">
+                {{ 'PHONE.PROBLEMS.' + repairOption.problemId | translate }}
+              </span>
+        </div>
+      </div>
+      <div fxFlex="20px"></div>
+      <div fxLayout="column" fxFlex="33">
+        <h3>{{ "PHONE.PRICE_ESTIMATED" | translate }}:</h3>
+        <div *ngIf="dataService.price">{{ dataService.price }}&thinsp;₺</div>
+      </div>
+    </div>
+  </md-card-subtitle>
+</md-card-header>
