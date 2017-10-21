@@ -2,31 +2,44 @@ import { Injectable } from '@angular/core';
 import { IRepairTable, repairTable } from '../assets/repair/repairTable';
 import { IPhoneOption } from 'app/iphone-option';
 import { IRepairOption } from 'app/irepair-option';
+import { IRepairRequest } from 'app/irepair-request';
 
 @Injectable()
 export class DataService {
+  public repairRequest: IRepairRequest = {
+    phoneOption: null,
+    selectedRepairOptions: [],
+    price: 0,
+    warranty: null,
+    securityCode: null,
+    comment: null,
+    imeis: [],
+    termsAggreed: false,
+    customer: {
+      address: "",
+      email: "",
+      name: "",
+      tel_number: ""
+    }
+  };
   public phoneOptionId: number = null;
-  public phoneOption: IPhoneOption = null;
   public repairTable: IRepairTable = repairTable;
-  public selectedRepairOptions: IRepairOption[] = [];
-  public price = 0;
-  public warranty: boolean = null;
-  public securityCode: string = null;
 
   constructor() { }
 
   public resetPhoneOption() {
-    this.phoneOption = null;
+    this.repairRequest.phoneOption = null;
   }
 
   public selectPhoneOption(id: number) {
-    this.phoneOption = this.repairTable
+    this.repairRequest.phoneOption = this.repairTable
       .phoneOptions
       .find((phoneOption: IPhoneOption) => phoneOption.id === id);
   }
 
   public calculate(): void {
-    this.price = this.selectedRepairOptions
+    this.repairRequest.price = this.repairRequest
+      .selectedRepairOptions
       .reduce((price: number, repairOption: IRepairOption) =>
         price + repairOption.price, 0);
   }

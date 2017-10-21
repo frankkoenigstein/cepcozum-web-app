@@ -28,6 +28,8 @@ import { DataService } from './data.service';
 import { DataComponent } from './data/data.component';
 import { ProblemsAdditionalComponent } from './problems-additional/problems-additional.component';
 import { OrderCardHeaderComponent } from './order-card-header/order-card-header.component';
+import { SendRepairRequestComponent } from './send-repair-request/send-repair-request.component';
+import { ContactComponent } from './contact/contact.component';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -37,6 +39,8 @@ const appRoutes: Routes = [
   { path: 'phone', component: PhoneComponent },
   { path: 'problems', component: ProblemsComponent },
   { path: 'problemsadditional', component: ProblemsAdditionalComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'sendRepairRequestComponent', component: SendRepairRequestComponent},
   { path: '',
     redirectTo: '/phone',
     pathMatch: 'full'
@@ -50,7 +54,9 @@ const appRoutes: Routes = [
     PhoneComponent,
     DataComponent,
     ProblemsAdditionalComponent,
-    OrderCardHeaderComponent
+    OrderCardHeaderComponent,
+    SendRepairRequestComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

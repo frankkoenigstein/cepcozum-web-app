@@ -15,16 +15,37 @@
         </mat-placeholder>
         <input matInput formControlName="securityCode" />
       </mat-input-container>
+      <h2>{{ "PHONE.IMEIS" | translate }}</h2>
+      <mat-input-container>
+        <mat-placeholder>
+          <mat-icon>search</mat-icon>
+          {{ "PHONE.IMEI1" | translate }}
+        </mat-placeholder>
+        <input type="number" matInput formControlName="imei1" />
+      </mat-input-container>
+      <mat-input-container>
+        <mat-placeholder>
+          <mat-icon>search</mat-icon>
+          {{ "PHONE.IMEI2" | translate }}
+        </mat-placeholder>
+        <input type="number" matInput formControlName="imei2" />
+      </mat-input-container>
+      <h2>{{ "PHONE.COMMENT" | translate }}</h2>
+      <mat-input-container>
+        <textarea matInput formControlName="comment"></textarea>
+      </mat-input-container>
       <hr/>
       <pre>{{ problemsAddFormGroup.value | json }}</pre>
     </mat-card-content>
     <mat-card-actions>
       <button type="button" mat-raised-button color="accent"
+      (click)="back()"
       routerLink="/problems" routerLinkActive="active">
         {{ "BACK" | translate}}
       </button>
       <button type="button" mat-raised-button color="accent"
-        routerLink="/problemsadditional" routerLinkActive="active"
+        (click)="forward()"
+        routerLink="/contact" routerLinkActive="active"
         [disabled]="!problemsAddFormGroup.valid">
         {{ "FORWARD" | translate }}
       </button>

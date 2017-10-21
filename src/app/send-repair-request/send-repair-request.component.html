@@ -1,0 +1,18 @@
+<mat-card>
+  <form id="sendRequestForm" novalidate>
+    <app-order-card-header></app-order-card-header>
+    <mat-card-content>
+      <h2>{{"SUMMARY" | translate }}</h2>
+      <pre>{{ dataService.repairRequest | json }}</pre>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" mat-raised-button color="accent"
+      routerLink="/contact" routerLinkActive="active">
+        {{ "BACK" | translate}}
+      </button>
+      <button type="button" mat-raised-button color="accent">
+        {{ "SEND" | translate }}
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

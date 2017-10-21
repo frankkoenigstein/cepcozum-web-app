@@ -18,17 +18,17 @@ export class ProblemsComponent implements OnInit {
 
   public back(): void {
     this.dataService.resetPhoneOption();
-    this.dataService.price = 0;
-    this.dataService.selectedRepairOptions = [];
+    this.dataService.repairRequest.price = 0;
+    this.dataService.repairRequest.selectedRepairOptions = [];
   }
 
   public toggleRepairOption(ro: IRepairOption): void {
-    const roIndex: number = this.dataService.selectedRepairOptions.indexOf(ro);
+    const roIndex: number = this.dataService.repairRequest.selectedRepairOptions.indexOf(ro);
 
     if (roIndex < 0) {
-      this.dataService.selectedRepairOptions.push(ro);
+      this.dataService.repairRequest.selectedRepairOptions.push(ro);
     } else {
-      this.dataService.selectedRepairOptions.splice(roIndex, 1);
+      this.dataService.repairRequest.selectedRepairOptions.splice(roIndex, 1);
     }
 
     this.dataService.calculate();

@@ -1,13 +1,13 @@
 <mat-card-header>
   <mat-card-title>
-    <h2>{{ dataService.phoneOption?.description }}</h2>
+    <h2>{{ dataService.repairRequest.phoneOption?.description }}</h2>
   </mat-card-title>
   <mat-card-subtitle>
     <div fxLayout='row' fxFlex="100" fxLayoutAlign="space-between">
       <div fxLayout='column'>
         <h3>{{ "PHONE.PROBLEMS_DESC" | translate }}:</h3>
         <div>
-          <span *ngFor="let repairOption of dataService.selectedRepairOptions">
+          <span *ngFor="let repairOption of dataService.repairRequest.selectedRepairOptions">
                 {{ 'PHONE.PROBLEMS.' + repairOption.problemId | translate }}
               </span>
         </div>
@@ -15,7 +15,7 @@
       <div fxFlex="20px"></div>
       <div fxLayout="column" fxFlex="33">
         <h3>{{ "PHONE.PRICE_ESTIMATED" | translate }}:</h3>
-        <div *ngIf="dataService.price">{{ dataService.price }}&thinsp;₺</div>
+        <div *ngIf="dataService.repairRequest.price">{{ dataService.repairRequest.price }}&thinsp;₺</div>
       </div>
     </div>
   </mat-card-subtitle>

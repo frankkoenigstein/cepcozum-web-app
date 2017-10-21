@@ -2,9 +2,9 @@
   <form id="problemsForm" novalidate>
     <app-order-card-header></app-order-card-header>
     <mat-card-content>
-      <input type="hidden" name="phone" [value]="dataService.phoneOption?.description" />
+      <input type="hidden" name="phone" [value]="dataService.repairRequest.phoneOption?.description" />
       <mat-list>
-        <mat-list-item *ngFor="let repairOption of dataService.phoneOption?.repairOptions">
+        <mat-list-item *ngFor="let repairOption of dataService.repairRequest.phoneOption?.repairOptions">
           <mat-checkbox
           [name]="repairOption.problemId"
           [value]="repairOption.price"
