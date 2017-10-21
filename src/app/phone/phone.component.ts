@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/startWith';
 
 import { IPhoneOption } from '../iphone-option';
 import { DataService } from '../data.service';

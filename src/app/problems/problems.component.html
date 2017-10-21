@@ -1,28 +1,28 @@
-<md-card>
+<mat-card>
   <form id="problemsForm" novalidate>
     <app-order-card-header></app-order-card-header>
-    <md-card-content>
+    <mat-card-content>
       <input type="hidden" name="phone" [value]="dataService.phoneOption?.description" />
-      <md-list>
-        <md-list-item *ngFor="let repairOption of dataService.phoneOption?.repairOptions">
-          <md-checkbox
+      <mat-list>
+        <mat-list-item *ngFor="let repairOption of dataService.phoneOption?.repairOptions">
+          <mat-checkbox
           [name]="repairOption.problemId"
           [value]="repairOption.price"
           (click)="toggleRepairOption(repairOption)">
             {{ 'PHONE.PROBLEMS.' + repairOption.problemId | translate }} ({{ repairOption.price }}&thinsp;₺)
-          </md-checkbox>
-        </md-list-item>
-      </md-list>
-    </md-card-content>
-    <md-card-actions>
-      <button type="button" md-raised-button color="accent" (click)="back()"
+          </mat-checkbox>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" mat-raised-button color="accent" (click)="back()"
       routerLink="/phone" routerLinkActive="active">
         {{ "BACK" | translate}}
       </button>
-      <button type="button" md-raised-button color="accent"
+      <button type="button" mat-raised-button color="accent"
       routerLink="/problemsadditional" routerLinkActive="active">
         {{ "FORWARD" | translate }}
       </button>
-    </md-card-actions>
+    </mat-card-actions>
   </form>
-</md-card>
+</mat-card>

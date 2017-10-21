@@ -1,14 +1,14 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
   <div fxFlex="100" fxLayoutAlign="space-between">
     {{title}}
     <form novalidate>
-      <md-select color="accent">
-        <md-option color="accent" *ngFor="let lang of translate.getLangs()" [value]="lang" (click)="setLang(lang)">
+      <mat-select color="accent">
+        <mat-option color="accent" *ngFor="let lang of translate.getLangs()" [value]="lang" (click)="setLang(lang)">
           {{ lang }}
-        </md-option>
-      </md-select>
+        </mat-option>
+      </mat-select>
     </form>
   </div>
-</md-toolbar>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

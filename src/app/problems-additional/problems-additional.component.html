@@ -1,33 +1,33 @@
-<md-card>
+<mat-card>
   <form id="problemsForm" [formGroup]="problemsAddFormGroup" novalidate>
     <app-order-card-header></app-order-card-header>
-    <md-card-content>
+    <mat-card-content>
       <h2>{{"WARRANTY" | translate }}</h2>
-      <md-radio-group formControlName="warranty">
-        <md-radio-button name="warranty" value="true">{{ "YES" | translate }}</md-radio-button>
-        <md-radio-button name="warranty" value="false">{{ "NO" | translate}}</md-radio-button>
-      </md-radio-group>
+      <mat-radio-group formControlName="warranty">
+        <mat-radio-button name="warranty" value="true">{{ "YES" | translate }}</mat-radio-button>
+        <mat-radio-button name="warranty" value="false">{{ "NO" | translate}}</mat-radio-button>
+      </mat-radio-group>
       <h2>{{ "SECURITY_CODE" | translate }}</h2>
-      <md-input-container>
-        <md-placeholder>
-          <md-icon>search</md-icon>
+      <mat-input-container>
+        <mat-placeholder>
+          <mat-icon>search</mat-icon>
           {{ "PHONE.SECURITY_CODE" | translate }}
-        </md-placeholder>
-        <input mdInput formControlName="securityCode" />
-      </md-input-container>
+        </mat-placeholder>
+        <input matInput formControlName="securityCode" />
+      </mat-input-container>
       <hr/>
       <pre>{{ problemsAddFormGroup.value | json }}</pre>
-    </md-card-content>
-    <md-card-actions>
-      <button type="button" md-raised-button color="accent"
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" mat-raised-button color="accent"
       routerLink="/problems" routerLinkActive="active">
         {{ "BACK" | translate}}
       </button>
-      <button type="button" md-raised-button color="accent"
+      <button type="button" mat-raised-button color="accent"
         routerLink="/problemsadditional" routerLinkActive="active"
         [disabled]="!problemsAddFormGroup.valid">
         {{ "FORWARD" | translate }}
       </button>
-    </md-card-actions>
+    </mat-card-actions>
   </form>
-</md-card>
+</mat-card>
