@@ -1,26 +1,21 @@
 <mat-card>
-  <form id="problemsForm" novalidate>
+  <form id="problemsForm" [formGroup]="problemsFormGroup" novalidate>
     <app-order-card-header></app-order-card-header>
     <mat-card-content>
       <input type="hidden" name="phone" [value]="dataService.repairRequest.phoneOption?.description" />
-      <mat-list>
-        <mat-list-item *ngFor="let repairOption of dataService.repairRequest.phoneOption?.repairOptions">
-          <mat-checkbox
-          [name]="repairOption.problemId"
-          [value]="repairOption.price"
-          (click)="toggleRepairOption(repairOption)">
-            {{ 'PHONE.PROBLEMS.' + repairOption.problemId | translate }} ({{ repairOption.price }}&thinsp;₺)
+      <mat-list formArrayName="repairOptions">
+        <mat-list-item *ngFor="let repairOptionControl of repairOptionControls.controls; let i = index" [formGroupName]="i">
+          <mat-checkbox formControlName="selected" (click)="toggleRepairOption(repairOptions[i])">
+            {{ 'PHONE.PROBLEMS.' + repairOptions[i].problemId | translate }} ({{ repairOptions[i].price }}&thinsp;₺)
           </mat-checkbox>
         </mat-list-item>
       </mat-list>
     </mat-card-content>
     <mat-card-actions>
-      <button type="button" mat-raised-button color="accent" (click)="back()"
-      routerLink="/phone" routerLinkActive="active">
+      <button type="button" mat-raised-button color="accent" (click)="back()" routerLink="/phone" routerLinkActive="active">
         {{ "BACK" | translate}}
       </button>
-      <button type="button" mat-raised-button color="accent"
-      routerLink="/problemsadditional" routerLinkActive="active">
+      <button type="button" mat-raised-button color="accent" routerLink="/problemsadditional" routerLinkActive="active">
         {{ "FORWARD" | translate }}
       </button>
     </mat-card-actions>

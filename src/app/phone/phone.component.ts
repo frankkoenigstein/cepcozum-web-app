@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
+import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/startWith";
 
-import { IPhoneOption } from '../iphone-option';
-import { DataService } from '../data.service';
+import { IPhoneOption } from "../iphone-option";
+import { DataService } from "../data.service";
 
 @Component({
-  selector: 'app-phone',
-  templateUrl: './phone.component.html',
-  styleUrls: ['./phone.component.css']
+  selector: "app-phone",
+  templateUrl: "./phone.component.html",
+  styleUrls: ["./phone.component.css"]
 })
 export class PhoneComponent implements OnInit {
   public phoneOptionControl: FormControl = new FormControl(null, Validators.required);
@@ -44,13 +44,13 @@ export class PhoneComponent implements OnInit {
     return this.dataService
       .repairTable
       .phoneOptions
-      .filter((phoneOption: IPhoneOption) => new RegExp(`${val}`, 'gi').test(phoneOption.description))
+      .filter((phoneOption: IPhoneOption) => new RegExp(`${val}`, "gi").test(phoneOption.description))
       .map((phoneOption: IPhoneOption) => phoneOption.description);
   }
 
   private setPhoneOption() {
     if (this.phoneOptionControl.valid) {
-      const poRegExp: RegExp = new RegExp(`^${this.phoneOptionControl.value}$`, 'gi');
+      const poRegExp: RegExp = new RegExp(`^${this.phoneOptionControl.value}$`, "gi");
 
       this.phoneOptionId = this.dataService
         .repairTable

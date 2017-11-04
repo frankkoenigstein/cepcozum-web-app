@@ -1,34 +1,40 @@
-import { Injectable } from '@angular/core';
-import { IRepairTable, repairTable } from '../assets/repair/repairTable';
-import { IPhoneOption } from 'app/iphone-option';
-import { IRepairOption } from 'app/irepair-option';
-import { IRepairRequest } from 'app/irepair-request';
+import { Injectable } from "@angular/core";
+import { IRepairTable, repairTable } from "../assets/repair/repairTable";
+import { IPhoneOption } from "app/iphone-option";
+import { IRepairOption } from "app/irepair-option";
+import { IRepairRequest } from "app/irepair-request";
 
 @Injectable()
 export class DataService {
-  public repairRequest: IRepairRequest = {
-    phoneOption: null,
-    selectedRepairOptions: [],
-    price: 0,
-    warranty: null,
-    securityCode: null,
-    comment: null,
-    imeis: [],
-    termsAggreed: false,
-    customer: {
-      address: "",
-      email: "",
-      name: "",
-      tel_number: ""
-    }
-  };
+  public repairRequest: IRepairRequest;
   public phoneOptionId: number = null;
   public repairTable: IRepairTable = repairTable;
 
-  constructor() { }
+  constructor() {
+    this.reset();
+   }
 
   public resetPhoneOption() {
     this.repairRequest.phoneOption = null;
+  }
+
+  public reset(): void {
+    this.repairRequest = {
+      phoneOption: null,
+      selectedRepairOptions: [],
+      price: 0,
+      warranty: null,
+      securityCode: null,
+      comment: null,
+      imeis: [],
+      termsAggreed: false,
+      customer: {
+        address: "",
+        email: "",
+        name: "",
+        tel_number: ""
+      }
+    };
   }
 
   public selectPhoneOption(id: number) {
