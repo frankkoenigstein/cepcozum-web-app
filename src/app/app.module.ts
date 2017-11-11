@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Http, HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { Http, HttpModule } from "@angular/http";
+import { RouterModule, Routes } from "@angular/router";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -16,34 +16,62 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatToolbarModule
-} from '@angular/material';
+} from "@angular/material";
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { TranslateLoader, TranslateModule, TranslateStaticLoader } from 'ng2-translate';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateStaticLoader
+} from "ng2-translate";
 
-import { AppComponent } from './app.component';
-import { ProblemsComponent } from './problems/problems.component';
-import { PhoneComponent } from './phone/phone.component';
-import { DataService } from './data.service';
-import { DataComponent } from './data/data.component';
-import { ProblemsAdditionalComponent } from './problems-additional/problems-additional.component';
-import { OrderCardHeaderComponent } from './order-card-header/order-card-header.component';
-import { SendRepairRequestComponent } from './send-repair-request/send-repair-request.component';
-import { ContactComponent } from './contact/contact.component';
+import { PhoneSelectedGuardService } from "./phone-selected-guard.service";
+
+import { AppComponent } from "./app.component";
+import { ProblemsComponent } from "./problems/problems.component";
+import { PhoneComponent } from "./phone/phone.component";
+import { DataService } from "./data.service";
+import { DataComponent } from "./data/data.component";
+import { ProblemsAdditionalComponent } from "./problems-additional/problems-additional.component";
+import { OrderCardHeaderComponent } from "./order-card-header/order-card-header.component";
+import { SendRepairRequestComponent } from "./send-repair-request/send-repair-request.component";
+import { ContactComponent } from "./contact/contact.component";
 
 export function createTranslateLoader(http: Http) {
-  return new TranslateStaticLoader(http, './assets/i18n', '.json');
+  return new TranslateStaticLoader(http, "./assets/i18n", ".json");
 }
 
 const appRoutes: Routes = [
-  { path: 'phone', component: PhoneComponent },
-  { path: 'problems', component: ProblemsComponent },
-  { path: 'problemsadditional', component: ProblemsAdditionalComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'sendRepairRequestComponent', component: SendRepairRequestComponent},
-  { path: '',
-    redirectTo: '/phone',
-    pathMatch: 'full'
+  { path: "phone", component: PhoneComponent },
+  {
+    path: "problems",
+    component: ProblemsComponent,
+    canActivate: [PhoneSelectedGuardService]
+  },
+  {
+    path: "problemsadditional",
+    component: ProblemsAdditionalComponent,
+    canActivate: [PhoneSelectedGuardService]
+  },
+  {
+    path: "contact",
+    component: ContactComponent,
+    canActivate: [PhoneSelectedGuardService]
+  },
+  {
+    path: "sendRepairRequestComponent",
+    component: SendRepairRequestComponent,
+    canActivate: [PhoneSelectedGuardService]
+  },
+  {
+    path: "",
+    redirectTo: "/phone",
+    pathMatch: "full"
+  },
+  {
+    path: "**",
+    redirectTo: "/phone",
+    pathMatch: "full"
   }
 ];
 
@@ -66,11 +94,11 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
+      useFactory: createTranslateLoader,
       deps: [Http]
     }),
     RouterModule.forRoot(
-      appRoutes,
+      appRoutes
       // { enableTracing: true } // <-- debugging purposes only
     ),
     FlexLayoutModule,
@@ -86,9 +114,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatToolbarModule
   ],
-  providers: [
-    DataService
-  ],
+  providers: [DataService, PhoneSelectedGuardService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

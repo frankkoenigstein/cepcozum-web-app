@@ -1,6 +1,6 @@
-import { IPhoneOption } from "app/iphone-option";
-import { IRepairOption } from "app/irepair-option";
-import { ICustomer } from "app/icustomer";
+import { IPhoneOption } from 'app/iphone-option';
+import { IRepairOption } from 'app/irepair-option';
+import { ICustomer } from 'app/icustomer';
 
 export interface IRepairRequest {
   phoneOption: IPhoneOption;
