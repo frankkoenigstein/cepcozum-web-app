@@ -26,6 +26,7 @@ import {
 } from "ng2-translate";
 
 import { PhoneSelectedGuardService } from "./phone-selected-guard.service";
+import { ProblemsSelectedGuardService } from "./problems-selected-guard.service";
 
 import { AppComponent } from "./app.component";
 import { ProblemsComponent } from "./problems/problems.component";
@@ -51,17 +52,17 @@ const appRoutes: Routes = [
   {
     path: "problemsadditional",
     component: ProblemsAdditionalComponent,
-    canActivate: [PhoneSelectedGuardService]
+    canActivate: [ProblemsSelectedGuardService]
   },
   {
     path: "contact",
     component: ContactComponent,
-    canActivate: [PhoneSelectedGuardService]
+    canActivate: [ProblemsSelectedGuardService]
   },
   {
     path: "sendRepairRequestComponent",
     component: SendRepairRequestComponent,
-    canActivate: [PhoneSelectedGuardService]
+    canActivate: [ProblemsSelectedGuardService]
   },
   {
     path: "",
@@ -114,7 +115,11 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatToolbarModule
   ],
-  providers: [DataService, PhoneSelectedGuardService],
+  providers: [
+    DataService,
+    PhoneSelectedGuardService,
+    ProblemsSelectedGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

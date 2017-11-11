@@ -4,7 +4,7 @@ import { DataService } from "./data.service";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class PhoneSelectedGuardService implements CanActivate {
+export class ProblemsSelectedGuardService implements CanActivate {
   constructor(
     private router: Router,
     private dataService: DataService
@@ -14,11 +14,10 @@ export class PhoneSelectedGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.dataService.repairRequest.phoneOption) {
+    if (this.dataService.repairRequest.selectedRepairOptions.length) {
       return true;
-    }
-    else {
-      this.router.navigate(["/phone"]);
+    } else {
+      this.router.navigate(["/problems"]);
 
       return false;
     }

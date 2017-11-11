@@ -15,7 +15,10 @@
       <button type="button" mat-raised-button color="accent" (click)="back()" routerLink="/phone" routerLinkActive="active">
         {{ "BACK" | translate}}
       </button>
-      <button type="button" mat-raised-button color="accent" routerLink="/problemsadditional" routerLinkActive="active">
+      <button type="button" mat-raised-button color="accent"
+        routerLink="/problemsadditional"
+        routerLinkActive="active"
+        [disabled]="!dataService.repairRequest.selectedRepairOptions.length">
         {{ "FORWARD" | translate }}
       </button>
     </mat-card-actions>
