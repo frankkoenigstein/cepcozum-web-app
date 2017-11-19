@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataService } from 'app/data.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { DataService } from "app/data.service";
 
-export const IMEI_PATTERN: RegExp = /^[0-9]{15,16}$/g;
+export const IMEI_PATTERN: RegExp = /^[0-9]{15,16}$/;
 
 @Component({
-  selector: 'app-problems-additional',
-  templateUrl: './problems-additional.component.html',
-  styleUrls: ['./problems-additional.component.css']
+  selector: "app-problems-additional",
+  templateUrl: "./problems-additional.component.html",
+  styleUrls: ["./problems-additional.component.css"]
 })
 export class ProblemsAdditionalComponent implements OnInit {
   public problemsAddFormGroup: FormGroup;

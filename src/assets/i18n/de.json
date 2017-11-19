@@ -1,5 +1,9 @@
 {
   "PHONE": {
+    "COMMENT": "Kommentar",
+    "IMEIS": "IMEI",
+    "IMEI1": "IMEI erste Simkarte",
+    "IMEI2": "IMEI zweite Simkarte",
     "PROBLEMS": {
       "1": "Bildschirm Gebrochen",
       "2": "Batterie (Akku)",
@@ -11,6 +15,7 @@
       "8": "LCD Probleme",
       "9": "Gebrochene Touch-Bereiche"
     },
+    "SECURITY_CODE": "Sicherheitscode",
     "PRICE_ESTIMATED": "Geschätzter Preis",
     "PROBLEMS_DESC": "Probleme",
     "REPAIR": "Reparieren",

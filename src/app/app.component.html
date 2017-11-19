@@ -1,13 +1,18 @@
 <mat-toolbar color="primary">
-  <div fxFlex="100" fxLayoutAlign="space-between">
-    {{title}}
-    <form novalidate>
-      <mat-select color="accent">
-        <mat-option color="accent" *ngFor="let lang of translate.getLangs()" [value]="lang" (click)="setLang(lang)">
-          {{ lang }}
-        </mat-option>
-      </mat-select>
-    </form>
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div>{{title}}</div>
+    <div fxFlex="20">
+      <form novalidate>
+        <mat-select color="accent" [(value)]="translate.currentLang">
+          <mat-option color="accent"
+            *ngFor="let lang of translate.getLangs()"
+            [value]="lang"
+            (click)="setLang(lang)">
+            {{ lang }}
+          </mat-option>
+        </mat-select>
+      </form>
+    </div>
   </div>
 </mat-toolbar>
 

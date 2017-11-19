@@ -2,50 +2,60 @@
   <form id="problemsForm" [formGroup]="problemsAddFormGroup" novalidate>
     <app-order-card-header></app-order-card-header>
     <mat-card-content>
-      <h2>{{"WARRANTY" | translate }}</h2>
-      <mat-radio-group formControlName="warranty">
-        <mat-radio-button name="warranty" value="true">{{ "YES" | translate }}</mat-radio-button>
-        <mat-radio-button name="warranty" value="false">{{ "NO" | translate}}</mat-radio-button>
-      </mat-radio-group>
-      <h2>{{ "SECURITY_CODE" | translate }}</h2>
-      <mat-input-container>
-        <mat-placeholder>
-          <mat-icon>search</mat-icon>
-          {{ "PHONE.SECURITY_CODE" | translate }}
-        </mat-placeholder>
-        <input matInput formControlName="securityCode" />
-      </mat-input-container>
+      <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between start">
+        <div fxFlex="50">
+          <h2>{{"WARRANTY" | translate }}</h2>
+          <mat-radio-group formControlName="warranty">
+            <mat-radio-button name="warranty" value="true">{{ "YES" | translate }}</mat-radio-button>
+            <mat-radio-button name="warranty" value="false">{{ "NO" | translate}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div fxFlex="50">
+          <h2>{{ "PHONE.SECURITY_CODE" | translate }}</h2>
+          <mat-input-container>
+            <mat-placeholder>
+              <mat-icon>security</mat-icon>
+              {{ "PHONE.SECURITY_CODE" | translate }}
+            </mat-placeholder>
+            <input matInput formControlName="securityCode" />
+          </mat-input-container>
+        </div>
+      </div>
       <h2>{{ "PHONE.IMEIS" | translate }}</h2>
-      <mat-input-container>
-        <mat-placeholder>
-          <mat-icon>search</mat-icon>
-          {{ "PHONE.IMEI1" | translate }}
-        </mat-placeholder>
-        <input type="number" matInput formControlName="imei1" />
-      </mat-input-container>
-      <mat-input-container>
-        <mat-placeholder>
-          <mat-icon>search</mat-icon>
-          {{ "PHONE.IMEI2" | translate }}
-        </mat-placeholder>
-        <input type="number" matInput formControlName="imei2" />
-      </mat-input-container>
+      <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between start">
+        <div fxFlex="50%">
+          <mat-input-container>
+            <mat-placeholder>
+              <mat-icon>sim_card</mat-icon>
+              {{ "PHONE.IMEI1" | translate }}
+            </mat-placeholder>
+            <input type="number" matInput formControlName="imei1" />
+          </mat-input-container>
+        </div>
+        <div fxFlex="50%">
+          <mat-input-container>
+            <mat-placeholder>
+              <mat-icon>sim_card</mat-icon>
+              {{ "PHONE.IMEI2" | translate }}
+            </mat-placeholder>
+            <input type="number" matInput formControlName="imei2" />
+          </mat-input-container>
+        </div>
+      </div>
       <h2>{{ "PHONE.COMMENT" | translate }}</h2>
-      <mat-input-container>
-        <textarea matInput formControlName="comment"></textarea>
-      </mat-input-container>
-      <hr/>
-      <pre>{{ problemsAddFormGroup.value | json }}</pre>
+      <div fxLayout="column" fxLayoutAlign=" stretch">
+        <mat-input-container fxFill>
+          <textarea rows="4" matInput formControlName="comment"></textarea>
+        </mat-input-container>
+      </div>
+      <!-- <hr/>
+      <pre>{{ problemsAddFormGroup.value | json }}</pre> -->
     </mat-card-content>
     <mat-card-actions>
-      <button type="button" mat-raised-button color="accent"
-      (click)="back()"
-      routerLink="/problems" routerLinkActive="active">
+      <button type="button" mat-raised-button color="accent" (click)="back()" routerLink="/problems" routerLinkActive="active">
         {{ "BACK" | translate}}
       </button>
-      <button type="button" mat-raised-button color="accent"
-        (click)="forward()"
-        routerLink="/contact" routerLinkActive="active"
+      <button type="button" mat-raised-button color="accent" (click)="forward()" routerLink="/contact" routerLinkActive="active"
         [disabled]="!problemsAddFormGroup.valid">
         {{ "FORWARD" | translate }}
       </button>
