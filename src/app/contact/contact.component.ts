@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataService } from 'app/data.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { DataService } from "app/data.service";
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: "app-contact",
+  templateUrl: "./contact.component.html",
+  styleUrls: ["./contact.component.css"]
 })
 export class ContactComponent implements OnInit {
   public contactFormGroup: FormGroup;
@@ -18,25 +18,47 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     this.contactFormGroup = this.formBuilder
     .group({
-      name: [this.dataService.repairRequest.customer.name, [
+      name: [null, [
         Validators.required, Validators.maxLength(100)
       ]],
-      email: [this.dataService.repairRequest.customer.email, [
+      email: [null, [
         Validators.required, Validators.email
       ]],
-      phone: [this.dataService.repairRequest.customer.tel_number, [
+      phone: [null, [
         Validators.required
       ]],
-      address: [this.dataService.repairRequest.customer.address, [
+      address: [null, [
         Validators.required, Validators.maxLength(200)
-      ]],
-      termsAggreed: [this.dataService.repairRequest.termsAggreed, [
-        Validators.required
+      // ]],
+      // termsAggreed: [this.dataService.repairRequest.termsAggreed, [
+      //   Validators.required
       ]]
     });
+
+    if (this.dataService.repairRequest.customer) {
+      this.contactFormGroup.setValue({
+        name: this.dataService.repairRequest.customer.name,
+        email: this.dataService.repairRequest.customer.email,
+        phone: this.dataService.repairRequest.customer.tel_number,
+        address: this.dataService.repairRequest.customer.address
+      });
+    }
   }
 
-  public back(): void {}
+  public back(): void {
+    if (!this.contactFormGroup.valid) {
+      this.dataService.repairRequest.customer = undefined;
+    }
+  }
 
-  public forward(): void {}
+  public forward(): void {
+    if (this.contactFormGroup.valid) {
+      this.dataService.repairRequest.customer = {
+        address: this.contactFormGroup.get("address").value,
+        email: this.contactFormGroup.get("email").value,
+        tel_number: this.contactFormGroup.get("phone").value,
+        name: this.contactFormGroup.get("name").value,
+      };
+    }
+  }
 }

@@ -28,12 +28,7 @@ export class DataService {
       comment: null,
       imeis: [],
       termsAggreed: false,
-      customer: {
-        address: "",
-        email: "",
-        name: "",
-        tel_number: ""
-      }
+      customer: null
     };
   }
 

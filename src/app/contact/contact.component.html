@@ -2,59 +2,68 @@
   <form id="contactForm" [formGroup]="contactFormGroup" novalidate>
     <app-order-card-header></app-order-card-header>
     <mat-card-content>
-      <h2>{{ "NAME" | translate }}</h2>
-      <mat-input-container>
-        <mat-placeholder>
-          <mat-icon>account_box</mat-icon>
-          {{ "NAME" | translate }}
-        </mat-placeholder>
-        <input matInput formControlName="name" />
-      </mat-input-container>
+      <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between start">
+        <div fxFlex="50">
+          <h2>{{ "CONTACT.NAME" | translate }}</h2>
+          <mat-input-container>
+            <mat-placeholder>
+              <mat-icon>account_box</mat-icon>
+              {{ "CONTACT.NAME" | translate }}
+            </mat-placeholder>
+            <input matInput formControlName="name" />
+          </mat-input-container>
+        </div>
+        <div fxFlex="50">
+          <h2>{{ "ADDRESS" | translate }}</h2>
+          <mat-input-container>
+            <mat-placeholder>
+              <mat-icon>home</mat-icon>
+              {{ "ADDRESS" | translate }}
+            </mat-placeholder>
+            <textarea matInput formControlName="address"></textarea>
+          </mat-input-container>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between start">
+        <div fxFlex="50">
+          <h2>{{ "CONTACT.PHONE_NUMBER" | translate }}</h2>
+          <mat-input-container>
+            <mat-placeholder>
+              <mat-icon>phone</mat-icon>
+              {{ "CONTACT.PHONE_NUMBER" | translate }}
+            </mat-placeholder>
+            <input type="tel" matInput formControlName="phone" />
+          </mat-input-container>
+        </div>
 
-      <h2>{{ "EMAIL" | translate }}</h2>
-      <mat-input-container>
-        <mat-placeholder>
-          <mat-icon>email</mat-icon>
-          {{ "EMAIL" | translate }}
-        </mat-placeholder>
-        <input matInput formControlName="email" />
-      </mat-input-container>
-
-      <h2>{{ "PHONE_NUMBER" | translate }}</h2>
-      <mat-input-container>
-        <mat-placeholder>
-          <mat-icon>phone</mat-icon>
-          {{ "PHONE_NUMBER" | translate }}
-        </mat-placeholder>
-        <input type="tel" matInput formControlName="phone" />
-      </mat-input-container>
-
-      <h2>{{ "ADDRESS" | translate }}</h2>
-      <mat-input-container>
-        <mat-placeholder>
-          <mat-icon>home</mat-icon>
-          {{ "ADDRESS" | translate }}
-        </mat-placeholder>
-        <textarea matInput formControlName="address" ></textarea>
-      </mat-input-container>
-
-      <h2>{{"TERMS_AGREE" | translate }}</h2>
-      <mat-radio-group formControlName="termsAggreed">
-        <mat-radio-button name="warranty" value="true">{{ "YES" | translate }}</mat-radio-button>
-        <mat-radio-button name="warranty" value="false">{{ "NO" | translate}}</mat-radio-button>
-      </mat-radio-group>
+        <div fxFlex="50">
+          <h2>{{ "CONTACT.EMAIL" | translate }}</h2>
+          <mat-input-container>
+            <mat-placeholder>
+              <mat-icon>email</mat-icon>
+              {{ "CONTACT.EMAIL" | translate }}
+            </mat-placeholder>
+            <input matInput formControlName="email" />
+          </mat-input-container>
+        </div>
+      </div>
+      <!-- <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between start">
+        <div fxFlex="50">
+          <h2>{{"TERMS_AGREE" | translate }}</h2>
+          <mat-radio-group formControlName="termsAggreed">
+            <mat-radio-button name="warranty" value="true">{{ "YES" | translate }}</mat-radio-button>
+            <mat-radio-button name="warranty" value="false">{{ "NO" | translate}}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div> -->
       <hr/>
       <pre>{{ contactFormGroup.value | json }}</pre>
     </mat-card-content>
     <mat-card-actions>
-      <button type="button" mat-raised-button color="accent"
-      (click)="back()"
-      routerLink="/problemsadditional" routerLinkActive="active">
+      <button type="button" mat-raised-button color="accent" (click)="back()" routerLink="/problemsadditional" routerLinkActive="active">
         {{ "BACK" | translate}}
       </button>
-      <button type="button" mat-raised-button color="accent"
-        (click)="forward()"
-        routerLink="/sendRepairRequestComponent" routerLinkActive="active"
+      <button type="button" mat-raised-button color="accent" (click)="forward()" routerLink="/sendRepairRequestComponent" routerLinkActive="active"
         [disabled]="!contactFormGroup.valid">
         {{ "FORWARD" | translate }}
       </button>

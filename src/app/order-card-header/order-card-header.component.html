@@ -17,5 +17,17 @@
         <div *ngIf="dataService.repairRequest.price">{{ dataService.repairRequest.price }}&thinsp;₺</div>
       </div>
     </div>
+    <div *ngIf="dataService.repairRequest.customer" fxLayout='row' fxLayoutWrap fxFlex="100" fxLayoutAlign="space-between">
+        <div fxLayout='column' fxFlex="45">
+          <h3>{{ "CONTACT.ADDRESS" | translate }}:</h3>
+          <div fxFlex="90">{{ dataService.repairRequest.customer?.name }}</div>
+          <div fxFlex="90">{{ dataService.repairRequest.customer?.address }}</div>
+        </div>
+        <div fxLayout="column" fxFlex="50">
+          <h3>{{ "CONTACT.SELF" | translate }}:</h3>
+          <div fxFlex="90">{{ dataService.repairRequest.customer?.tel_number }}</div>
+          <div fxFlex="90">{{ dataService.repairRequest.customer?.email }}</div>
+        </div>
+      </div>
   </mat-card-subtitle>
 </mat-card-header>

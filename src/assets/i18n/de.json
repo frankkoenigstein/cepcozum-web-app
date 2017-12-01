@@ -21,6 +21,13 @@
     "REPAIR": "Reparieren",
     "SELECT_PLACEHOLDER": "Marke und Model"
   },
+  "CONTACT": {
+    "SELF": "Kontakt",
+    "ADDRESS": "Adresse",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Telefonnummer"
+  },
   "BACK": "Zurück",
   "FORWARD": "Weiter",
   "NO": "nein",
